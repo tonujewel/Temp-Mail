@@ -4,9 +4,13 @@ class URL {
 
   // domains
   static const domainsUrl = "${baseURL}domains";
+
   // register
-  static const registerUrl = "${baseURL}register";
+  static const registerUrl = "${baseURL}accounts";
 
   // login
-  static const loginUrl = "${baseURL}login";
+  static const loginUrl = "${baseURL}token";
+
+  // login
+  static const emailUrl = "${baseURL}messages";
 }

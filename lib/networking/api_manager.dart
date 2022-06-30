@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +10,7 @@ import '../utils/appConstant.dart';
 import 'custom_exception.dart';
 
 class APIManager {
-  static Future<dynamic> postFromDataAPICall(
+  static Future<dynamic> postAPICall(
       {required String url,
       required Map<String, String> body,
       Map<String, String>? header}) async {
@@ -16,12 +18,13 @@ class APIManager {
     var responseJson;
     try {
       if (header != null) {
-        responseJson = http.MultipartRequest("POST", Uri.parse(url))
-          ..headers.addAll(header)
-          ..fields.addAll(body);
+        var req = http.Request("POST", Uri.parse(url))..headers.addAll(header);
+        req.body = jsonEncode(body);
+        responseJson = req;
       } else {
-        responseJson = http.MultipartRequest("POST", Uri.parse(url))
-          ..fields.addAll(body);
+        var req = http.Request("POST", Uri.parse(url));
+        req.body = jsonEncode(body);
+        responseJson = req;
       }
 
       final streamedResponse = await responseJson.send();
@@ -87,6 +90,7 @@ class APIManager {
 }
 
 dynamic _response(http.Response response) {
+  print("object>>>>>>>>> ${response.statusCode}");
   switch (response.statusCode) {
     case 200:
       var responseJson = response.body.toString();
@@ -97,6 +101,9 @@ dynamic _response(http.Response response) {
     case 400:
       throw BadRequestException(response.body.toString());
     case 401:
+      throw UnauthorisedException(response.body.toString());
+    case 422:
+      throw UnprocessableEntity(response.body.toString());
     case 404:
       throw UnauthorisedException(response.body.toString());
     case 403:

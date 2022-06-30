@@ -5,7 +5,7 @@ class CustomException implements Exception {
   CustomException([this._message, this._prefix]);
 
   String toString() {
-    return "$_prefix$_message";
+    return "$_message";
   }
 }
 
@@ -35,4 +35,8 @@ class TimeOutException extends CustomException {
 
 class InternalServerError extends CustomException {
   InternalServerError([String? message]) : super(message);
+}
+
+class UnprocessableEntity extends CustomException {
+  UnprocessableEntity([String? message]) : super(message);
 }

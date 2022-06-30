@@ -1,9 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:temp_mail/screens/login_screen/login_screen.dart';
+import 'package:temp_mail/widgets/password_textField.dart';
 
 import '../../style/my_style.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_progress.dart';
 import 'sign_up_controller.dart';
 
@@ -22,13 +23,20 @@ class SignUpScreen extends StatelessWidget {
               body: ListView(
                 padding: const EdgeInsets.all(15.0),
                 children: [
-                  SizedBox(height: Get.height * 0.03),
-                  Image.asset(
-                    'assets/images/logo.png',
-                    // height: Get.height * .15,
-                    width: Get.width * .8,
+                  SizedBox(height: Get.height * 0.05),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Sign Up',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
+                  Image.asset('assets/images/logo.png'),
                   TextField(
+                    controller: controller.userNameTextController,
                     decoration: InputDecoration(
                       hintText: "Username",
                       border: OutlineInputBorder(
@@ -39,27 +47,31 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: Style.primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        elevation: 15.0,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(15.0),
-                        child: Text(
-                          'Submit',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
+                  const SizedBox(height: 20),
+                  PasswordTextField(
+                    controller: controller.passwordTextController,
                   ),
+                  const SizedBox(height: 30),
+                  CustomButton(
+                    text: "Sign Up",
+                    onTap: () => controller.signUpApiCall(),
+                  ),
+                  const SizedBox(height: 30),
+                  InkWell(
+                    onTap: () => Get.to(() => const LoginScreen()),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          "Already have an account? Sign In",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
