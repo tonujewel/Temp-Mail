@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:temp_mail/screens/login_screen/login_screen.dart';
-import 'package:temp_mail/widgets/password_textField.dart';
+import 'package:temp_mail/widgets/password_textfield.dart';
 
 import '../../style/my_style.dart';
 import '../../widgets/custom_button.dart';

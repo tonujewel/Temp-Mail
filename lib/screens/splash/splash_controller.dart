@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:temp_mail/screens/home_screen/home_screen.dart';
-import 'package:temp_mail/screens/login_screen/login_screen.dart';
 import 'package:temp_mail/screens/sign_up_screen/sign_up_screen.dart';
 import '../../main.dart';
-import '../../utils/appConstant.dart';
+import '../../utils/app_constant.dart';
 
 class SplashController extends GetxController {
   @override

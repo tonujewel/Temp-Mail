@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:temp_mail/models/domains_dm.dart';
 import 'package:temp_mail/models/sign_up_dm.dart';
 import 'package:temp_mail/models/sign_up_error_dm.dart';
 import 'package:temp_mail/screens/login_screen/login_screen.dart';
-import 'package:temp_mail/utils/appConstant.dart';
-
+import 'package:temp_mail/utils/app_constant.dart';
 import '../../networking/api_manager.dart';
 import '../../networking/url.dart';
 

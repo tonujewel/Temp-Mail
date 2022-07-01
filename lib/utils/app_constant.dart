@@ -8,6 +8,8 @@ class AppConstant {
   static const String tokenKey = "Token";
   static const String userIdKey = "UserIdKey";
 
+  static String databaseName="TempEmail";
+
   static getFormatedDate(date) {
     var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
     var inputDate = inputFormat.parse(date.toString());
@@ -29,11 +31,35 @@ class AppConstant {
     return outputFormat.format(inputDate);
   }
 
-  static void hideKeyword(BuildContext context) {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
-      currentFocus.focusedChild?.unfocus();
-    }
+    static void customDialog(
+      {required BuildContext context,
+      required String title,
+      required String middleText,
+      required Function() confirmAction,
+      String? confirmButtonText}) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text(title),
+          content: Text(middleText),
+          actions: <Widget>[
+             TextButton(
+              child:  const Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+             TextButton(
+              onPressed: confirmAction,
+              child:  Text(confirmButtonText ?? "Yes"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   static String discountCalculation(

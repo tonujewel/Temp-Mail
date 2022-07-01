@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:temp_mail/screens/login_screen/login_screen.dart';
 import 'dart:io';
 import 'dart:async';
-import '../utils/appConstant.dart';
+import '../utils/app_constant.dart';
 import 'custom_exception.dart';
 
 class APIManager {
@@ -90,7 +90,7 @@ class APIManager {
 }
 
 dynamic _response(http.Response response) {
-  print("object>>>>>>>>> ${response.statusCode}");
+  
   switch (response.statusCode) {
     case 200:
       var responseJson = response.body.toString();

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:temp_mail/style/my_style.dart';
 import 'package:temp_mail/widgets/custom_button.dart';
 import 'package:temp_mail/widgets/custom_progress.dart';
-import 'package:temp_mail/widgets/password_textField.dart';
-
+import 'package:temp_mail/widgets/password_textfield.dart';
 import 'login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
