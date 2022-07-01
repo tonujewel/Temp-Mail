@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:temp_mail/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:temp_mail/widgets/custom_button.dart';
 import 'package:temp_mail/widgets/custom_progress.dart';
 import 'package:temp_mail/widgets/password_textfield.dart';
@@ -41,6 +42,22 @@ class LoginScreen extends StatelessWidget {
                   CustomButton(
                     onTap: () => controller.loginApiCall(),
                     text: "Login",
+                  ),
+                  const SizedBox(height: 30),
+                  InkWell(
+                    onTap: () => Get.to(() => const SignUpScreen()),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          "Don't have an account? Sign Up",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

@@ -43,6 +43,10 @@ class SignUpController extends GetxController {
       onError: (error) {
         isLoading = false;
         update();
+        if (error.toString().contains("_no_internet")) {
+          errorSnackbar("No Internet");
+          return;
+        }
         errorSnackbar(error.toString());
       },
     );
@@ -83,6 +87,10 @@ class SignUpController extends GetxController {
       onError: (error) {
         isLoading = false;
         update();
+        if (error.toString().contains("_no_internet")) {
+          errorSnackbar("No Internet");
+          return;
+        }
         SignUpErrorDm signUpErrorDm = signUpErrorDmFromJson(error.toString());
         errorSnackbar("${signUpErrorDm.hydraDescription}");
       },

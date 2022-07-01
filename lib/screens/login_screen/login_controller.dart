@@ -14,7 +14,6 @@ class LoginController extends GetxController {
   var emailTextController = TextEditingController();
   var passwordTextController = TextEditingController();
 
-
   void loginApiCall() {
     if (emailTextController.text.isEmpty) {
       errorSnackbar("Email required");
@@ -51,6 +50,12 @@ class LoginController extends GetxController {
       onError: (error) {
         isLoading = false;
         update();
+        print(error.toString());
+
+        if (error.toString().contains("_no_internet")) {
+          errorSnackbar("No Internet");
+          return;
+        }
         LoginErrorDm loginErrorDm = loginErrorDmFromJson(error.toString());
         errorSnackbar("${loginErrorDm.message}");
       },

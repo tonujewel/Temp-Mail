@@ -23,17 +23,7 @@ class SignUpScreen extends StatelessWidget {
               body: ListView(
                 padding: const EdgeInsets.all(15.0),
                 children: [
-                  SizedBox(height: Get.height * 0.05),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: Get.height * 0.03),
                   Image.asset('assets/images/logo.png'),
                   TextField(
                     controller: controller.userNameTextController,
