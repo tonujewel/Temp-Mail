@@ -29,11 +29,10 @@ class LoginController extends GetxController {
 
     var headers = {'content-type': 'application/json'};
 
-    var body = {"address": "jewel@knowledgemd.com", "password": "jewel123"};
-    // var body = {
-    //   "address": emailTextController.text,
-    //   "password": passwordTextController.text
-    // };
+    var body = {
+      "address": emailTextController.text,
+      "password": passwordTextController.text
+    };
 
     APIManager.postAPICall(url: URL.loginUrl, body: body, header: headers).then(
       (response) {
@@ -50,8 +49,7 @@ class LoginController extends GetxController {
       onError: (error) {
         isLoading = false;
         update();
-        print(error.toString());
-
+  
         if (error.toString().contains("_no_internet")) {
           errorSnackbar("No Internet");
           return;

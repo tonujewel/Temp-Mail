@@ -5,6 +5,8 @@ import 'package:temp_mail/screens/home_screen/home_controller.dart';
 import 'package:temp_mail/utils/app_constant.dart';
 import 'package:temp_mail/widgets/custom_progress.dart';
 import '../../models/home_hive_dm.dart';
+import '../../widgets/no_email_widget.dart';
+import '../../widgets/no_internet_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -44,14 +46,18 @@ class HomeScreen extends StatelessWidget {
                   )
                 ],
               ),
-              body: ListView.builder(
-                  padding: const EdgeInsets.all(20),
-                  itemCount: controller.emailList.length,
-                  itemBuilder: (context, index) {
-                    return MailListItem(
-                      data: controller.emailList[index],
-                    );
-                  }),
+              body: controller.noInternet
+                  ? const NoInternetWidget()
+                  : controller.emailList.isEmpty
+                      ? const NoMailWidget()
+                      : ListView.builder(
+                          padding: const EdgeInsets.all(20),
+                          itemCount: controller.emailList.length,
+                          itemBuilder: (context, index) {
+                            return MailListItem(
+                              data: controller.emailList[index],
+                            );
+                          }),
             ),
           );
         });
@@ -104,22 +110,4 @@ class MailListItem extends StatelessWidget {
       ),
     );
   }
-
-  //  PopupMenuItem _buildPopupMenuItem(
-  //     String title, IconData iconData) {
-  //   return PopupMenuItem(
-  //     value: title,
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.start,
-  //       children: [
-  //         Icon(
-  //           iconData,
-  //           color: Colors.black,
-  //         ),
-  //         const SizedBox(width: 10),
-  //         Text(title),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

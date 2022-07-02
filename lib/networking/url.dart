@@ -11,6 +11,6 @@ class URL {
   // login
   static const loginUrl = "${baseURL}token";
 
-  // login
+  // email list
   static const emailUrl = "${baseURL}messages";
 }

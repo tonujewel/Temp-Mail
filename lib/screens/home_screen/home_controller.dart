@@ -36,7 +36,6 @@ class HomeController extends GetxController {
 
   void checkInternet() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
-
     if (connectivityResult == ConnectivityResult.none) {
       if (emailList.isEmpty) {
         noInternet = true;
@@ -82,7 +81,7 @@ class HomeController extends GetxController {
             }
           }
           getLocalData();
-        
+
           update();
         }
       },
@@ -109,6 +108,7 @@ class HomeController extends GetxController {
         middleText: "Are you sure want to logout",
         confirmAction: () async {
           await prefs!.clear();
+          Hive.box(AppConstant.databaseName).clear();
           Get.offAll(() => const LoginScreen());
         });
     return;

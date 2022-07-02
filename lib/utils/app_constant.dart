@@ -17,19 +17,6 @@ class AppConstant {
     return outputFormat.format(inputDate);
   }
 
-  static getFormatedDateOnly(date) {
-    var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
-    var inputDate = inputFormat.parse(date.toString());
-    var outputFormat = DateFormat('dd MMM, yyyy ');
-    return outputFormat.format(inputDate);
-  }
-
-  static getFormatedTime(date) {
-    var inputFormat = DateFormat('yyyy-MM-dd HH:mm');
-    var inputDate = inputFormat.parse(date.toString());
-    var outputFormat = DateFormat('HH:mm');
-    return outputFormat.format(inputDate);
-  }
 
     static void customDialog(
       {required BuildContext context,
@@ -60,12 +47,6 @@ class AppConstant {
         );
       },
     );
-  }
-
-  static String discountCalculation(
-      {required String price, required String discountPrice}) {
-    double result = double.parse(price) - double.parse(discountPrice);
-    return result.toString();
   }
 
   static String convertToAgo(String dateTime) {

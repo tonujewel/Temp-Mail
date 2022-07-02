@@ -11,18 +11,23 @@ class SplashScreen extends StatelessWidget {
         init: SplashController(),
         builder: (controller) {
           return Scaffold(
-            backgroundColor:  Colors.white,
+            backgroundColor: Colors.white,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: Get.height * 0.03),
-                  Image.asset(
-                    'assets/images/logo.png',
-                    // height: Get.height * .15,
-                    width: Get.width * .8,
-                  ),
+                  TweenAnimationBuilder<double>(
+                    duration: const Duration(milliseconds: 3000),
+                    tween: Tween(begin: 100.0,end: 400.0),
+                      builder: (context, value, child) {
+                        return Image.asset(
+                          'assets/images/logo.png',
+                          height: value,
+                          width: value,
+                        );
+                      })
                 ],
               ),
             ),
